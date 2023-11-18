@@ -23,7 +23,7 @@ func Test_extractRepoLinks(t *testing.T) {
 			ModVersion: "v1.1.12",
 		},
 	}
-	actual := ExtractRepoInfo("./sample_1/go.mod")
+	actual := ExtractRepoInfo("../test_samples/sample_1/go.mod")
 	if len(expected) != len(actual) {
 		t.Errorf("expected %v, got %v", expected, actual)
 	}
@@ -39,7 +39,7 @@ func Test_getIOSData(t *testing.T) {
 }
 
 func Test_CheckMod(t *testing.T) {
-	modPath := "../sample_1/go.mod"
+	modPath := "../test_samples/sample_1/go.mod"
 	links := ExtractRepoInfo(modPath)
 	for i := range links {
 		err := links[i].getOSIData()
@@ -51,18 +51,18 @@ func Test_CheckMod(t *testing.T) {
 }
 
 func Test_UpdateAllRepos(t *testing.T) {
-	modPath := "./../sample_2/go.mod"
+	modPath := "../test_samples/sample_2/go.mod"
 	links := ExtractRepoInfo(modPath)
 	UpdateAllRepos(links)
-	println("Total number of repos: ", len(links))
 	var count int
 	for i := range links {
 		if links[i].OSIData.Description != "" {
 			count++
 		}
-		println(links[i].Link, " ", links[i].OSIData.Description)
 	}
-	println("Number of repos with description: ", count)
+	if count != 10 {
+		t.Errorf("expected 10, got %v", count)
+	}
 }
 
 func Test_getPackageData(t *testing.T) {

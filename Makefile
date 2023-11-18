@@ -14,3 +14,10 @@ install:
 
 uninstall:
 	sudo rm $(INSTALL_DIR)/$(EXECUTABLE)
+
+testall:
+	go test ./modchecker/
+
+testcover:
+	go test ./modchecker/ -coverprofile=coverage.out
+	go tool cover -html=coverage.out
