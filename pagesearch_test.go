@@ -1,16 +1,25 @@
-package modchecker
+package modcheck_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/euanwm/modcheck"
+)
 
 func Test_FindGitHub(t *testing.T) {
+	t.Parallel()
+
 	expected := "github.com/go-gorm/mysql"
-	actual := FindGitHub("gorm.io/driver/mysql")
+	actual := modcheck.FindGitHub("gorm.io/driver/mysql")
+
 	if expected != actual {
 		t.Errorf("expected %v, got %v", expected, actual)
 	}
 }
 
 func Test_FindGitHubMultiple(t *testing.T) {
+	t.Parallel()
+
 	links := []string{
 		"golang.org/x/crypto",
 		"gorm.io/driver/mysql",
@@ -27,8 +36,10 @@ func Test_FindGitHubMultiple(t *testing.T) {
 		"github.com/go-gorm/sqlserver",
 		"github.com/go-gorm/gorm",
 	}
+
 	for i, link := range links {
-		actual := FindGitHub(link)
+		actual := modcheck.FindGitHub(link)
+
 		if expected[i] != actual {
 			t.Errorf("expected %v, got %v", expected[i], actual)
 		}
