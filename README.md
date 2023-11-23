@@ -1,4 +1,5 @@
-# Modcheck
+# Modcheck 
+[![codecov](https://codecov.io/gh/euanwm/modcheck/graph/badge.svg?token=D6038IV9I9)](https://codecov.io/gh/euanwm/modcheck)
 
 If you're reading this, then Godspeed.
 
