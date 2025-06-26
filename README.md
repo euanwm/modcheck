@@ -1,4 +1,4 @@
-# Modcheck 
+# Modcheck
 [![codecov](https://codecov.io/gh/euanwm/modcheck/graph/badge.svg?token=D6038IV9I9)](https://codecov.io/gh/euanwm/modcheck)
 
 If you're reading this, then Godspeed.
@@ -10,6 +10,10 @@ I made this tool to assess the state of a project's dependencies quickly. I want
 ## Installation
 
 `go install github.com/euanwm/modcheck/cmd/modcheck@latest`
+
+If you haven't done so, you'll need to add your GOPATH to your PATH environment variable.
+
+`export PATH="$(go env GOPATH)/bin:$PATH"`
 
 ## Usage
 
