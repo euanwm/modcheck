@@ -20,9 +20,9 @@ type Project struct {
 		ID string `json:"id"`
 	} `json:"projectKey"`
 
-	OpenIssuesCount string `json:"openIssuesCount"`
-	StarsCount      string `json:"starsCount"`
-	ForksCount      string `json:"forksCount"`
+	OpenIssuesCount int    `json:"openIssuesCount"`
+	StarsCount      int    `json:"starsCount"`
+	ForksCount      int    `json:"forksCount"`
 	License         string `json:"license"`
 	Description     string `json:"description"`
 	Homepage        string `json:"homepage"`
@@ -42,7 +42,7 @@ type Project struct {
 				ShortDescription string `json:"shortDescription"`
 				URL              string `json:"url"`
 			} `json:"documentation"`
-			Score   string   `json:"score"`
+			Score   int      `json:"score"`
 			Reason  string   `json:"reason"`
 			Details []string `json:"details"`
 		} `json:"checks"`
