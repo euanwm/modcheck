@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/euanwm/modcheck"
 	"github.com/gdamore/tcell/v2"
@@ -106,15 +107,15 @@ func populateTable(repos []modcheck.Repo, table *tview.Table) {
 			SetTextColor(tview.Styles.PrimaryTextColor).
 			SetAlign(tview.AlignCenter))
 
-		table.SetCell(repo+1, OpenIssuesColumn, tview.NewTableCell(repos[repo].OSIData.OpenIssuesCount).
+		table.SetCell(repo+1, OpenIssuesColumn, tview.NewTableCell(strconv.Itoa(repos[repo].OSIData.OpenIssuesCount)).
 			SetTextColor(tview.Styles.PrimaryTextColor).
 			SetAlign(tview.AlignCenter))
 
-		table.SetCell(repo+1, StarsColumn, tview.NewTableCell(repos[repo].OSIData.StarsCount).
+		table.SetCell(repo+1, StarsColumn, tview.NewTableCell(strconv.Itoa(repos[repo].OSIData.StarsCount)).
 			SetTextColor(tview.Styles.PrimaryTextColor).
 			SetAlign(tview.AlignCenter))
 
-		table.SetCell(repo+1, ForksColumn, tview.NewTableCell(repos[repo].OSIData.ForksCount).
+		table.SetCell(repo+1, ForksColumn, tview.NewTableCell(strconv.Itoa(repos[repo].OSIData.ForksCount)).
 			SetTextColor(tview.Styles.PrimaryTextColor).
 			SetAlign(tview.AlignCenter))
 

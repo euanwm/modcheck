@@ -74,8 +74,8 @@ func Test_UpdateAllRepos(t *testing.T) {
 		}
 	}
 
-	if count != 10 {
-		t.Errorf("expected 10, got %v", count)
+	if count != 11 {
+		t.Errorf("expected 11, got %v", count)
 	}
 }
 
