@@ -141,7 +141,28 @@ func main() {
 	setupTable(table)
 	populateTable(repos, table)
 
-	if err := app.SetRoot(table, true).Run(); err != nil {
+	// Create a flex layout with the table and a footer
+	flex := tview.NewFlex().SetDirection(tview.FlexRow)
+
+	// Add the table as the main content
+	flex.AddItem(table, 0, 1, true)
+
+	// Create a footer with quit instructions
+	footer := tview.NewTextView().
+		SetTextAlign(tview.AlignCenter).
+		SetText("Press 'q' or Ctrl-C to quit")
+	flex.AddItem(footer, 1, 0, false)
+
+	// Set key capture for quitting the application
+	app.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+		if event.Rune() == 'q' || event.Key() == tcell.KeyCtrlC {
+			app.Stop()
+			return nil
+		}
+		return event
+	})
+
+	if err := app.SetRoot(flex, true).Run(); err != nil {
 		panic(err)
 	}
 }
